@@ -1,6 +1,6 @@
 module protos
 
-go 1.22.6
+go 1.23.1
 
 require (
 	google.golang.org/grpc v1.66.2
