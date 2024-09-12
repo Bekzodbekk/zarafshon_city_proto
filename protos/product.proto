@@ -1,0 +1,104 @@
+syntax = "proto3";
+
+option go_package = "./genproto/productspb";
+
+service ProdcutService{
+    rpc CreateProduct(CreateProductReq) returns (CreateProductResp){}
+    rpc UpdateProduct(UpdateProductReq) returns (UpdateProductResp){}
+    rpc DeleteProduct(DeleteProductReq) returns (DeleteProductResp){}
+    rpc GetProductById(GetProductByIdReq) returns (GetProductByIdResp){}
+    rpc GetProducts(GetProductsReq) returns (GetProductsResp){}
+}
+
+message Product{
+    string id = 1;
+    string product_name = 2;
+    float product_price = 3;
+    float product_profit = 4;
+    repeated string colors = 5;
+    string product_type = 6;
+    int64 count = 7;
+    CUD cud = 8;
+}
+
+message CUD{
+    string created_at = 1;
+    string updated_at = 2;
+    int64 deleted_at = 3;
+}
+
+// Create Product
+message CreateProductReq{
+    string product_name = 1;
+    float product_price = 2;
+    float product_profit = 3;
+    repeated string colors = 4;
+    string product_type = 5;
+    int64 count = 6;
+}
+
+message CreateProductResp{
+    UniverResponse univ_resp = 1;
+}
+
+// Update Product
+message UpdateProductReq{
+    string id = 1;
+    string product_name = 2;
+    float product_price = 3;
+    float product_profit = 4;
+    repeated string colors = 5;
+    string product_type = 6;
+    int64 count = 7;
+}
+
+message UpdateProductResp{
+    UniverResponse univ_resp = 1;
+}
+
+// Delete Product
+message DeleteProductReq{
+    string id = 1;
+}
+message DeleteProductResp{
+    UniverResponse univ_resp = 1;
+}
+
+// Get Product BY ID
+message GetProductByIdReq{
+    string id = 1;
+}
+message GetProductByIdResp{
+    UniverResponse univ_resp = 1;
+}
+
+// Get Products All
+message GetProductsReq{}
+message GetProductsResp{
+    bool status = 1;
+    string message = 2;
+    string products_count = 3;
+    repeated Product products = 4;
+}
+
+// Get Products by filter
+message GetProductsByFilterReq{
+    string product_name = 1;
+    float product_price = 2;
+    repeated string colors = 3;
+    string product_type = 4;
+}
+message GetProductsByFilterResp{
+    bool status = 1;
+    string message = 2;
+    string products_count = 3;
+    repeated Product products = 4;
+}
+
+
+
+message UniverResponse{
+    bool status = 1;
+    string message = 2;
+    Product product = 3;
+}
