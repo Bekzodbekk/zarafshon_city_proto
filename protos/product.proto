@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option go_package = "./genproto/productspb";
 
-service ProdcutService{
+service ProductService{
     rpc CreateProduct(CreateProductReq) returns (CreateProductResp){}
     rpc UpdateProduct(UpdateProductReq) returns (UpdateProductResp){}
     rpc DeleteProduct(DeleteProductReq) returns (DeleteProductResp){}
