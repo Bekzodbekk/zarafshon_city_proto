@@ -1,4 +1,4 @@
-module protos
+module github.com/Bekzodbekk/zarafshon_city_proto
 
 go 1.23.1
 
